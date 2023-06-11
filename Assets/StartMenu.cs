@@ -13,25 +13,20 @@ public class StartMenu : MonoBehaviour
 
     public void Button()
     {
-      
-            GameObject.FindGameObjectWithTag("Spawner").GetComponent<Spawner>().Raz = true;
-            GameObject.FindGameObjectWithTag("StartBlock").GetComponent<StartBlock>().Raz = true;
-            CanvasMenu.SetActive(false);
-            CanvasGame.SetActive(true);
-            CanvasStart.SetActive(true);
+        GameObject.FindGameObjectWithTag("Spawner").GetComponent<Spawner>().IsStartGame = true;
+        GameObject.FindGameObjectWithTag("StartBlock").GetComponent<StartBlock>().Raz = true;
+        CanvasMenu.SetActive(false);
+        CanvasGame.SetActive(true);
+        CanvasStart.SetActive(true);
         
     }
 
     public void ButtonOption()
     {
-
         CanvasOption.SetActive(true);
-
     }
     public void ButtonOptionOff()
     {
-
         CanvasOption.SetActive(false);
-
     }
 }

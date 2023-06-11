@@ -4,26 +4,60 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    public GameObject [] BlockVar;
-    private float timeBtsSopawn;
-    public float startTimeBtsSpawn;
-    public bool Raz = false;
+    [SerializeField] private GameObject [] _blocks;
+    
+    [SerializeField] private float _spawnCooldownBlocks;
+    [SerializeField] private float _spawnFirstBlock;
 
+    [SerializeField] private GameObject[] _spawnPoints;
+
+    private int lastIndex;
+    private bool _isStarted;
+    private Coroutine _spawnBlockCoroutine;
+    public bool IsStartGame { get; set; } = false;
 
     private void Update()
     {
-        if (Raz)
+        if (IsStartGame == false)
         {
-            if (timeBtsSopawn <= 0)
-            {
-                int rand = Random.Range(0, BlockVar.Length);
-                Instantiate(BlockVar[rand], transform.position, Quaternion.identity);
-                timeBtsSopawn = startTimeBtsSpawn;
-            }
-            else
-            {
-                timeBtsSopawn -= Time.deltaTime;
-            }
+            return;
         }
+        if (_spawnBlockCoroutine == null)
+        {
+            _spawnBlockCoroutine = StartCoroutine(SpawnWithCooldown());
+        }
+        
+    }
+    
+    private IEnumerator SpawnWithCooldown()
+    {
+        if (_isStarted == false)
+        {
+            _isStarted = true;
+            yield return new WaitForSeconds(_spawnFirstBlock);
+        }
+        else
+        {
+            yield return new WaitForSeconds(_spawnCooldownBlocks);
+        }
+        Spawn();
+        _spawnBlockCoroutine = null;
+    }
+
+    private void Spawn()
+    {
+        int index = Random.Range(0, _spawnPoints.Length);
+        while (lastIndex == index)
+        {
+            index = Random.Range(0, _spawnPoints.Length);
+        }
+
+        lastIndex = index;
+        
+        int indexSpawnedObject = Random.Range(0, _blocks.Length);
+        GameObject spawnedObject = _blocks[indexSpawnedObject];
+
+        Instantiate(spawnedObject);
+        spawnedObject.transform.position = _spawnPoints[index].transform.position;
     }
 }

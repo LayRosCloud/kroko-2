@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class Scope : MonoBehaviour
@@ -19,7 +17,6 @@ public class Scope : MonoBehaviour
 
     void Update()
     {
-
         score1 = score / 2;
         if (score1 > ScoreTop)
         {
