@@ -44,20 +44,21 @@ public class Spawner : MonoBehaviour
         _spawnBlockCoroutine = null;
     }
 
-    private void Spawn()
+   private void Spawn()
     {
         int index = Random.Range(0, _spawnPoints.Length);
+
         while (lastIndex == index)
         {
             index = Random.Range(0, _spawnPoints.Length);
         }
 
         lastIndex = index;
-        
+
         int indexSpawnedObject = Random.Range(0, _blocks.Length);
         GameObject spawnedObject = _blocks[indexSpawnedObject];
 
-        Instantiate(spawnedObject);
-        spawnedObject.transform.position = _spawnPoints[index].transform.position;
+        GameObject spawned = Instantiate(spawnedObject);
+        spawned.transform.position = _spawnPoints[index].transform.position;
     }
 }

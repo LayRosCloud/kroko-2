@@ -55,7 +55,7 @@ public class ShopUI : MonoBehaviour
     {
         Skin skin = skins[_currentPosition];
         _mainItem.mesh = skin.SkinMesh;
-        _costText.text = skin.Cost.ToString() + "$";
+        _costText.text = skin.Cost.ToString() + " $";
         _buyText.text = skin.IsSold ? SOLD : NOT_SOLD;
         
         if (_currentPosition == _selectPosition)
