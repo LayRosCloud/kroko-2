@@ -10,16 +10,17 @@ public class ShopUI : MonoBehaviour
     
     [SerializeField] private GameObject[] _objects;
     [SerializeField] private GameObject _parentItem;
-    [SerializeField] private Text _buyText;
+    [SerializeField] private Image _IconSprite;
+    [SerializeField] private Sprite _notBuySprite;
+    [SerializeField] private Sprite _buySprite;
+    [SerializeField] private Sprite _ApplySprite;
     [SerializeField] private Text _costText;
     [SerializeField] private Text _balanceText;
     
     private int _currentPosition = 1;
     private int _selectPosition = 0;
     
-    private const string SOLD = "куплено";
-    private const string NOT_SOLD = "купить";
-    private const string SELECTED = "выбрано";
+
     public int CurrentPosition => _currentPosition;
     public int SelectedPosition => _selectPosition;
 
@@ -57,11 +58,11 @@ public class ShopUI : MonoBehaviour
         Skin skin = skins[_currentPosition];
         _mainItem.mesh = skin.SkinMesh;
         _costText.text = skin.Cost.ToString() + " $";
-        _buyText.text = skin.IsSold ? SOLD : NOT_SOLD;
+        _IconSprite.sprite = skin.IsSold ? _buySprite : _notBuySprite;
         
         if (_currentPosition == _selectPosition)
         {
-            _buyText.text = SELECTED;
+            _IconSprite.sprite = _ApplySprite;
         }
         
         bool hasFirstItem = _currentPosition - 1 >= 0;
@@ -84,14 +85,14 @@ public class ShopUI : MonoBehaviour
     public void Buy()
     {
         _balanceText.text = PlayerPrefs.GetInt("Coin", 0).ToString() + "$";
-        _buyText.text = SOLD;
+        _IconSprite.sprite = _buySprite;
     }
 
     public void Select()
     {
         PlayerPrefs.SetInt("SelectedSkin", _currentPosition);
         _selectPosition = _currentPosition;
-        _buyText.text = SELECTED;
+        _IconSprite.sprite = _ApplySprite;
     }
     public void Show()
     {
