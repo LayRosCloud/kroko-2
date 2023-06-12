@@ -12,13 +12,15 @@ public class Spawner : MonoBehaviour
     [SerializeField] private float _spawnFirstBlock;
 
     [SerializeField] private float _spawnCooldownLimit;
-
+    
     [SerializeField] private GameObject[] _spawnPoints;
     private SpeedController _speedController;
     private int lastIndex;
     private bool _isStarted;
     private Coroutine _spawnBlockCoroutine;
     private Coroutine _changeSpeed;
+
+    public float SpawnCooldownLimit => _spawnCooldownLimit;
 
     public float SpawnCooldownBlocks => _spawnCooldownBlocks;
     public bool IsStartGame { get; set; } = false;
@@ -30,10 +32,9 @@ public class Spawner : MonoBehaviour
 
     public void SetSpawnCooldownBlocks(float value)
     {
-        if (_spawnCooldownBlocks + value < _spawnCooldownLimit)
+        if (value < _spawnCooldownLimit)
         {
-            _spawnCooldownBlocks = _spawnCooldownLimit;
-            throw new ArgumentException("Достигнут лимит");
+            value = _spawnCooldownLimit;
         }
         _spawnCooldownBlocks = value;
     }

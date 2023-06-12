@@ -2893,7 +2893,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6938126893457495987, guid: 4cd2eac5cfbf5ad40904f736a5b45711,
         type: 3}
+      propertyPath: m_Interpolate
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6938126893457495987, guid: 4cd2eac5cfbf5ad40904f736a5b45711,
+        type: 3}
       propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6938126893457495987, guid: 4cd2eac5cfbf5ad40904f736a5b45711,
+        type: 3}
+      propertyPath: m_CollisionDetection
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7476983476576838864, guid: 4cd2eac5cfbf5ad40904f736a5b45711,
@@ -5138,7 +5148,7 @@ MonoBehaviour:
   - {fileID: 5882740898240881689, guid: 705fd7ef3ba7d274fb7fd1f068650b11, type: 3}
   _spawnCooldownBlocks: 1.5
   _spawnFirstBlock: 3
-  _spawnCooldownLimit: 0.5
+  _spawnCooldownLimit: 0.3
   _spawnPoints:
   - {fileID: 563294477}
   - {fileID: 1242504355}
@@ -5175,6 +5185,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _timeChange: 0.1
   _player: {fileID: 1142020330}
+  _limitSpeed: 10
 --- !u!1 &954288437
 GameObject:
   m_ObjectHideFlags: 0
