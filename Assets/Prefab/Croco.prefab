@@ -160,10 +160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b9ef61286aed1845a1524ecca85de70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1
-  Rb: {fileID: 0}
-  jumpForce: 0
-  CoinScore: 0
-  ScoreCoin: {fileID: 0}
-  jump: 1
-  auto: {fileID: 0}
+  _moveSpeed: 0
+  _autoJump: {fileID: 0}
+  _scoreCoin: {fileID: 0}
+  _jumpForce: 0

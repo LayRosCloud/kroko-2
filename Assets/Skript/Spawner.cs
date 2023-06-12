@@ -1,7 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
+using System.Collections;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
+[RequireComponent(typeof(SpeedController))]
 public class Spawner : MonoBehaviour
 {
     [SerializeField] private GameObject [] _blocks;
@@ -10,12 +12,28 @@ public class Spawner : MonoBehaviour
     [SerializeField] private float _spawnFirstBlock;
 
     [SerializeField] private GameObject[] _spawnPoints;
-
+    private SpeedController _speedController;
     private int lastIndex;
     private bool _isStarted;
     private Coroutine _spawnBlockCoroutine;
+    private Coroutine _changeSpeed;
+
+    public float SpawnCooldownBlocks => _spawnCooldownBlocks;
     public bool IsStartGame { get; set; } = false;
 
+    private void Awake()
+    {
+        _speedController = GetComponent<SpeedController>();
+    }
+
+    public void SetSpawnCooldownBlocks(float value)
+    {
+        if (_spawnCooldownBlocks + value < 0)
+        {
+            throw new ArgumentException("Значение было отрицательным");
+        }
+        _spawnCooldownBlocks = value;
+    }
     private void Update()
     {
         if (IsStartGame == false)
@@ -26,9 +44,9 @@ public class Spawner : MonoBehaviour
         {
             _spawnBlockCoroutine = StartCoroutine(SpawnWithCooldown());
         }
-        
     }
     
+
     private IEnumerator SpawnWithCooldown()
     {
         if (_isStarted == false)
@@ -40,6 +58,8 @@ public class Spawner : MonoBehaviour
         {
             yield return new WaitForSeconds(_spawnCooldownBlocks);
         }
+        _speedController.AddValue();
+        
         Spawn();
         _spawnBlockCoroutine = null;
     }
@@ -47,7 +67,7 @@ public class Spawner : MonoBehaviour
    private void Spawn()
     {
         int index = Random.Range(0, _spawnPoints.Length);
-
+        
         while (lastIndex == index)
         {
             index = Random.Range(0, _spawnPoints.Length);
@@ -55,8 +75,22 @@ public class Spawner : MonoBehaviour
 
         lastIndex = index;
 
-        int indexSpawnedObject = Random.Range(0, _blocks.Length);
-        GameObject spawnedObject = _blocks[indexSpawnedObject];
+        int indexSpawnedObject = Random.Range(0, 100);
+        GameObject spawnedObject = null;
+        if (indexSpawnedObject < 10)
+        {
+            spawnedObject = _blocks[1];
+        }
+        else if (indexSpawnedObject < 30)
+        {
+             spawnedObject = _blocks[2];
+        }
+        else
+        {
+            spawnedObject = _blocks[0];
+        }
+        
+        //GameObject spawnedObject = _blocks[indexSpawnedObject];
 
         GameObject spawned = Instantiate(spawnedObject);
         spawned.transform.position = _spawnPoints[index].transform.position;

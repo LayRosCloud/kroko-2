@@ -13,6 +13,7 @@ public class ShopUI : MonoBehaviour
     [SerializeField] private Text _buyText;
     [SerializeField] private Text _costText;
     [SerializeField] private Text _balanceText;
+    
     private int _currentPosition = 1;
     private int _selectPosition = 0;
     

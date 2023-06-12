@@ -11,25 +11,33 @@ public class Player : MonoBehaviour
     [SerializeField] private Toggle _autoJump;
     [SerializeField] private Text _scoreCoin;
     [SerializeField] private float _jumpForce;
+    [SerializeField] private GameObject _particleStep;
+    [SerializeField] private AudioSource _deathSound;
+    [SerializeField] private AudioSource _moneySound;
+    [SerializeField] private AudioSource _jumpSound;
+    [SerializeField] private GameObject _deathCanvas;
 
+    private AudioSource _audio;
     private int _currentPos = 1;
 
     private bool _facingRight = true;
     private int _coinScore;
 
-    private Rigidbody _rigidbody;
+    public Rigidbody Rigidbody { get; private set; }
 
     private bool _jump = true;
 
     private Direction _targetDirection;
     private Coroutine _coroutine;
+    public int CurrentPosition => _currentPos;
 
     private void Start()
     {
+        _audio = GetComponent<AudioSource>();
         QualitySettings.maxQueuedFrames = 0;
         Application.targetFrameRate = 60;
 
-        _rigidbody = GetComponent<Rigidbody>();
+        Rigidbody = GetComponent<Rigidbody>();
 
         _coinScore = PlayerPrefs.GetInt("Coin", _coinScore);
         _scoreCoin.text = _coinScore.ToString();
@@ -85,12 +93,14 @@ public class Player : MonoBehaviour
         if (other.CompareTag("Coin"))
         {
             Destroy(other.gameObject);
+            _moneySound.Play();
             PlayerPrefs.SetInt("Coin", PlayerPrefs.GetInt("Coin", 0) + 1);
             ViewMoney();
         }
         if (other.CompareTag("Kislota"))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            _deathSound.Play();
+            _deathCanvas.SetActive(true);
         }
         if (other.CompareTag("Block"))
         {
@@ -132,11 +142,14 @@ public class Player : MonoBehaviour
     private void ChangeMove(Direction direction)
     {
         sbyte numDirection = (sbyte)direction;
-        
+
+        GameObject gm = Instantiate(_particleStep);
+        gm.transform.position = transform.position;
+        Destroy(gm, 0.2f);
         _currentPos += numDirection;
         
         _targetDirection = direction;
-        
+        _audio.Play();
         _coroutine = null;
     }
     
@@ -148,7 +161,8 @@ public class Player : MonoBehaviour
         }
         if (_jump)
         {
-            _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, _jumpForce, _rigidbody.velocity.z);
+            _jumpSound.Play();
+            Rigidbody.velocity = new Vector3(Rigidbody.velocity.x, _jumpForce, Rigidbody.velocity.z);
             _jump = false;
         }
     }
