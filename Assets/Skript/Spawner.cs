@@ -11,6 +11,8 @@ public class Spawner : MonoBehaviour
     [SerializeField] private float _spawnCooldownBlocks;
     [SerializeField] private float _spawnFirstBlock;
 
+    [SerializeField] private float _spawnCooldownLimit;
+
     [SerializeField] private GameObject[] _spawnPoints;
     private SpeedController _speedController;
     private int lastIndex;
@@ -28,9 +30,10 @@ public class Spawner : MonoBehaviour
 
     public void SetSpawnCooldownBlocks(float value)
     {
-        if (_spawnCooldownBlocks + value < 0)
+        if (_spawnCooldownBlocks + value < _spawnCooldownLimit)
         {
-            throw new ArgumentException("Значение было отрицательным");
+            _spawnCooldownBlocks = _spawnCooldownLimit;
+            throw new ArgumentException("Достигнут лимит");
         }
         _spawnCooldownBlocks = value;
     }
