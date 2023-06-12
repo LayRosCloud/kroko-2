@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mesh: {fileID: -2432090755550338912, guid: 591f7d17f97b7e54482a7901d5428f90, type: 3}
   _cost: 3
-  _isSold: 0
+  _isSold: 1

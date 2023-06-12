@@ -1,13 +1,11 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(ShopUI))]
 public class Shop : MonoBehaviour
 {
     [SerializeField] private Skin[] _skins;
-    [SerializeField] private MeshFilter _playerMesh;
+    [SerializeField] private Player _player;
     private ShopUI _shopUI;
     
     private void Awake()
@@ -17,18 +15,20 @@ public class Shop : MonoBehaviour
         _shopUI.MoveLeft(_skins);
         if (_shopUI.SelectedPosition != -1)
         {
-            _playerMesh.mesh = _skins[_shopUI.SelectedPosition].SkinMesh;
+            _player.gameObject.GetComponentInChildren<MeshFilter>().mesh = _skins[_shopUI.SelectedPosition].SkinMesh;
         }
     }
     public void Buy()
     {
-        float currentBalance = PlayerPrefs.GetInt("Coin", 0);
+        int currentBalance = PlayerPrefs.GetInt("Coin", 0);
         Skin skin = _skins[_shopUI.CurrentPosition];
         
         if (currentBalance - skin.Cost >= 0 && skin.IsSold == false)
         {
+            PlayerPrefs.SetInt("Coin", currentBalance - skin.Cost);
             skin.Buy();
             _shopUI.Buy();
+            _player.ViewMoney();
         }
     }
 
@@ -37,7 +37,7 @@ public class Shop : MonoBehaviour
         Skin skin = _skins[_shopUI.CurrentPosition];
         if (skin.IsSold)
         {
-            _playerMesh.mesh = skin.SkinMesh;
+            _player.gameObject.GetComponentInChildren<MeshFilter>().mesh = skin.SkinMesh;
             _shopUI.Select();
         }
     }

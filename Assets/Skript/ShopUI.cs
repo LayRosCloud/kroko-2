@@ -82,6 +82,7 @@ public class ShopUI : MonoBehaviour
     
     public void Buy()
     {
+        _balanceText.text = PlayerPrefs.GetInt("Coin", 0).ToString() + "$";
         _buyText.text = SOLD;
     }
 
