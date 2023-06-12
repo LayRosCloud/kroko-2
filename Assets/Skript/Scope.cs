@@ -3,33 +3,29 @@ using UnityEngine.UI;
 
 public class Scope : MonoBehaviour
 {
-    public int score;
-    public int score1;
+    private int score;
+    private int score1;
     public Text scoreDisplay;
-    public int ScoreTop;
+    private int ScoreTop;
     public Text ScoreTopTxt;
+    public bool DeathBool = true;
 
 
-    private void Start()
-    {
-        ScoreTop = PlayerPrefs.GetInt("ScoreTop", ScoreTop);
-    }
+    void Start() => ScoreTopTxt.text = PlayerPrefs.GetInt("ScoreTop", ScoreTop).ToString();
 
-    void Update()
+    private void Update()
     {
         score1 = score / 2;
         if (score1 > ScoreTop)
         {
-            ScoreTop = score1;
+            PlayerPrefs.SetInt("ScoreTop", score1);
         }
-        PlayerPrefs.SetInt("ScoreTop", ScoreTop);
         scoreDisplay.text = score1.ToString();
-        ScoreTopTxt.text = ScoreTop.ToString();
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Block"))
+        if (other.CompareTag("Block") && DeathBool)
         {
             score++;
         }

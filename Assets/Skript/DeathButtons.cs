@@ -10,6 +10,7 @@ public class DeathButtons : MonoBehaviour
     [SerializeField] private Transform[] _spawnPoints;
     [SerializeField] private Text _backCounter;
     [SerializeField] private GameObject _canvasDeath;
+    [SerializeField] private Scope Scope;
     public void WatchAds()
     {
         Debug.Log("Вы посмотрели рекламу!");
@@ -28,6 +29,7 @@ public class DeathButtons : MonoBehaviour
         _backCounter.text = "3";
         _player.gameObject.GetComponent<Rigidbody>().isKinematic = false;
         _backCounter.text = "";
+        Scope.DeathBool = true;
     }
     
     public void Back()
