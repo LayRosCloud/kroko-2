@@ -24,6 +24,7 @@ public class Player : MonoBehaviour
     private int _coinScore;
 
     public Rigidbody Rigidbody { get; private set; }
+    public bool IsStartedGame = false;
 
     private bool _jump = true;
 
@@ -46,10 +47,17 @@ public class Player : MonoBehaviour
     private void Update()
     {
         sbyte target = (sbyte)_targetDirection;
-
+        
         if (_coroutine == null)
         {
             _coroutine = StartCoroutine(MoveTo(target));
+        }
+
+        if (_autoJump.isOn && _jump && IsStartedGame)
+        {
+            _jumpSound.Play();
+            Rigidbody.velocity = new Vector3(Rigidbody.velocity.x, _jumpForce, Rigidbody.velocity.z);
+            _jump = false;
         }
     }
 
