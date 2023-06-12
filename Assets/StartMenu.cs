@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 
 
 public class StartMenu : MonoBehaviour
@@ -15,6 +12,8 @@ public class StartMenu : MonoBehaviour
     {
         GameObject.FindGameObjectWithTag("Spawner").GetComponent<Spawner>().IsStartGame = true;
         GameObject.FindGameObjectWithTag("StartBlock").GetComponent<StartBlock>().Raz = true;
+        FindObjectOfType<WaterUp>().IsStartGame = true;
+        FindObjectOfType<Player>().IsStartedGame = true;
         CanvasMenu.SetActive(false);
         CanvasGame.SetActive(true);
         CanvasStart.SetActive(true);

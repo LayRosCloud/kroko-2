@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BlockBreak : MonoBehaviour
@@ -19,6 +18,7 @@ public class BlockBreak : MonoBehaviour
         yield return new WaitForSeconds(1f);
         GameObject gm = Instantiate(_breakable);
         gm.transform.position = transform.position;
+        Destroy(gm, 5f);
         Destroy(gameObject);
     }
 

@@ -26,6 +26,7 @@ public class DeathButtons : MonoBehaviour
         _backCounter.text = "2";
         yield return new WaitForSeconds(1f);
         _backCounter.text = "3";
+        yield return new WaitForSeconds(1f);
         _player.gameObject.GetComponent<Rigidbody>().isKinematic = false;
         _backCounter.text = "";
     }
