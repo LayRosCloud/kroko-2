@@ -9,6 +9,7 @@ public class Death : MonoBehaviour
     [SerializeField] private GameObject _back;
     [SerializeField] private GameObject _btnVideo;
     [SerializeField] private GameObject _skip;
+    [SerializeField] private GameObject Time;
     [SerializeField] private Scope Scope;
     private void SetActiveFalse()
     {
@@ -17,5 +18,6 @@ public class Death : MonoBehaviour
         _skip.SetActive(true);
         gameObject.SetActive(false);
         Scope.DeathBool = false;
+        Time.SetActive(false);
     }
 }
