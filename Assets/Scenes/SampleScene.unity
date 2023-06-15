@@ -4674,7 +4674,7 @@ MonoBehaviour:
   - {fileID: 5882740898240881689, guid: 705fd7ef3ba7d274fb7fd1f068650b11, type: 3}
   _spawnCooldownBlocks: 1.5
   _spawnFirstBlock: 3
-  _spawnCooldownLimit: 0.3
+  _spawnCooldownLimit: 1
   _spawnPoints:
   - {fileID: 563294477}
   - {fileID: 1242504355}
