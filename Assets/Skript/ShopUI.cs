@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class ShopUI : MonoBehaviour
@@ -10,15 +9,19 @@ public class ShopUI : MonoBehaviour
     
     [SerializeField] private GameObject[] _objects;
     [SerializeField] private GameObject _parentItem;
+    
+    
     [SerializeField] private Image _IconSprite;
+    
     [SerializeField] private Sprite _notBuySprite;
     [SerializeField] private Sprite _buySprite;
     [SerializeField] private Sprite _ApplySprite;
+    
     [SerializeField] private Text _costText;
     [SerializeField] private Text _balanceText;
     
     private int _currentPosition = 1;
-    private int _selectPosition = 0;
+    private int _selectPosition;
     
 
     public int CurrentPosition => _currentPosition;
@@ -26,7 +29,7 @@ public class ShopUI : MonoBehaviour
 
     public void Init()
     {
-        _selectPosition = PlayerPrefs.GetInt("SelectedSkin", -1);
+        _selectPosition = PlayerPrefs.GetInt("SelectedSkin", 0);
         _balanceText.text = PlayerPrefs.GetInt("Coin", 0).ToString() + "$";
     }
 

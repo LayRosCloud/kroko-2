@@ -25,13 +25,18 @@ public class Player : MonoBehaviour
 
     public Rigidbody Rigidbody { get; private set; }
     public bool IsStartedGame = false;
-
+    
     private bool _jump = true;
 
     private Direction _targetDirection;
     private Coroutine _coroutine;
     public int CurrentPosition => _currentPos;
 
+    public float JumpForce
+    {
+        get => _jumpForce;
+        set => _jumpForce = value;
+    }
     private void Start()
     {
         _audio = GetComponent<AudioSource>();
@@ -53,6 +58,14 @@ public class Player : MonoBehaviour
             _coroutine = StartCoroutine(MoveTo(target));
         }
 
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            RightMove();
+        }
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            LeftMove();
+        }
         if (_autoJump.isOn && _jump && IsStartedGame)
         {
             _jumpSound.Play();
@@ -131,6 +144,8 @@ public class Player : MonoBehaviour
         {
             Flip();
         }
+
+        Time.timeScale = 1f;
         ChangeMove(Direction.Left);
     }
     
@@ -144,6 +159,7 @@ public class Player : MonoBehaviour
         {
             Flip();
         }
+        Time.timeScale = 1f;
         ChangeMove(Direction.Right);
     }
 
@@ -154,6 +170,7 @@ public class Player : MonoBehaviour
         GameObject gm = Instantiate(_particleStep);
         gm.transform.position = transform.position;
         Destroy(gm, 0.2f);
+        
         _currentPos += numDirection;
         
         _targetDirection = direction;

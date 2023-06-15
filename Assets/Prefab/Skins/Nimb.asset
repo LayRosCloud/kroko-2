@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Nimb
   m_EditorClassIdentifier: 
   _mesh: {fileID: -2432090755550338912, guid: 10cb6178e38141446884f31930940557, type: 3}
-  _cost: 0
+  _cost: 99
   _isSold: 0

@@ -11,6 +11,7 @@ public class DeathButtons : MonoBehaviour
     [SerializeField] private Text _backCounter;
     [SerializeField] private GameObject _canvasDeath;
     [SerializeField] private Scope Scope;
+    
     public void WatchAds()
     {
         Debug.Log("Вы посмотрели рекламу!");
@@ -24,12 +25,16 @@ public class DeathButtons : MonoBehaviour
     {
         _backCounter.text = "1";
         yield return new WaitForSeconds(1f);
+        
         _backCounter.text = "2";
         yield return new WaitForSeconds(1f);
+        
         _backCounter.text = "3";
         yield return new WaitForSeconds(1f);
+        
         _player.gameObject.GetComponent<Rigidbody>().isKinematic = false;
         _backCounter.text = "";
+        
         Scope.DeathBool = true;
     }
     

@@ -3,21 +3,32 @@
 
 public class StartMenu : MonoBehaviour
 {
-    public GameObject CanvasMenu;
-    public GameObject CanvasGame;
-    public GameObject CanvasStart;
-    public GameObject CanvasOption;
-
+    [SerializeField]private GameObject CanvasMenu;
+    [SerializeField]private GameObject CanvasGame;
+    [SerializeField]private GameObject CanvasStart;
+    [SerializeField]private GameObject CanvasOption;
+    [SerializeField] private Learning _learning; 
+    
     public void Button()
+    {
+        CanvasMenu.SetActive(false);
+        CanvasGame.SetActive(true);
+        StartCoroutine(_learning.StartLearnCoroutine(() =>
+            {
+                LearnCompleted();
+            }
+        ));
+
+    }
+
+    public void LearnCompleted()
     {
         GameObject.FindGameObjectWithTag("Spawner").GetComponent<Spawner>().IsStartGame = true;
         GameObject.FindGameObjectWithTag("StartBlock").GetComponent<StartBlock>().Raz = true;
         FindObjectOfType<WaterUp>().IsStartGame = true;
         FindObjectOfType<Player>().IsStartedGame = true;
-        CanvasMenu.SetActive(false);
-        CanvasGame.SetActive(true);
-        CanvasStart.SetActive(true);
         
+        CanvasStart.SetActive(true);
     }
 
     public void ButtonOption()

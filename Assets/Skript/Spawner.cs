@@ -36,6 +36,7 @@ public class Spawner : MonoBehaviour
         {
             value = _spawnCooldownLimit;
         }
+        
         _spawnCooldownBlocks = value;
     }
     private void Update()
@@ -44,6 +45,7 @@ public class Spawner : MonoBehaviour
         {
             return;
         }
+        
         if (_spawnBlockCoroutine == null)
         {
             _spawnBlockCoroutine = StartCoroutine(SpawnWithCooldown());
@@ -62,13 +64,14 @@ public class Spawner : MonoBehaviour
         {
             yield return new WaitForSeconds(_spawnCooldownBlocks);
         }
+        
         _speedController.AddValue();
         
-        Spawn();
+        Spawn(RandomPointSpawn(), GenerateSpawnedBlockIndex());
         _spawnBlockCoroutine = null;
     }
 
-   private void Spawn()
+   private int RandomPointSpawn()
     {
         int index = Random.Range(0, _spawnPoints.Length);
         
@@ -79,24 +82,34 @@ public class Spawner : MonoBehaviour
 
         lastIndex = index;
 
-        int indexSpawnedObject = Random.Range(0, 100);
-        GameObject spawnedObject = null;
-        if (indexSpawnedObject < 10)
-        {
-            spawnedObject = _blocks[1];
-        }
-        else if (indexSpawnedObject < 30)
-        {
-             spawnedObject = _blocks[2];
-        }
-        else
-        {
-            spawnedObject = _blocks[0];
-        }
-        
-        //GameObject spawnedObject = _blocks[indexSpawnedObject];
-
-        GameObject spawned = Instantiate(spawnedObject);
-        spawned.transform.position = _spawnPoints[index].transform.position;
+        return index;
     }
+
+   private int GenerateSpawnedBlockIndex()
+   {
+       int range = Random.Range(0, 100);
+        
+       int spawnedObject;
+       
+       if (range < 10)
+       {
+           spawnedObject = 1;
+       }
+       else if (range < 30)
+       {
+           spawnedObject = 2;
+       }
+       else
+       {
+           spawnedObject = 0;
+       }
+
+       return spawnedObject;
+   }
+   
+   public void Spawn(int pointSpawn, int blockIndex)
+   {
+       GameObject spawned = Instantiate(_blocks[blockIndex]);
+       spawned.transform.position = _spawnPoints[pointSpawn].transform.position;
+   }
 }

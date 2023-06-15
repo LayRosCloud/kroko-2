@@ -6,6 +6,15 @@ public class MenuSettings : MonoBehaviour
 {
     [SerializeField] private AudioMixerGroup _audioMixerGroup;
     [SerializeField] private GameObject _pauseObject;
+    [SerializeField] private GameObject _onMusicOn;
+    [SerializeField] private GameObject _onMusicOff;
+
+    private void Start()
+    {
+        int value = PlayerPrefs.GetInt("MasterVolume", 0);
+        OnMusic(value == 0);
+    }
+
     public void ClearSave()
     {
         PlayerPrefs.DeleteAll();
@@ -14,15 +23,18 @@ public class MenuSettings : MonoBehaviour
     
     public void OnMusic(bool enabled)
     {
-        float value = enabled ? 0 : -80;
+        int value = enabled ? 0 : -80;
         
         _audioMixerGroup.audioMixer.SetFloat("MasterVolume", value);
+        PlayerPrefs.SetInt("MasterVolume", value);
+        _onMusicOn.SetActive(enabled);
+        _onMusicOff.SetActive(enabled == false);
     }
 
     public void Pause()
     {
         _pauseObject.SetActive(true);
-        Time.timeScale = 0;
+        Time.timeScale = 0f;
     }
 
     public void Resume()

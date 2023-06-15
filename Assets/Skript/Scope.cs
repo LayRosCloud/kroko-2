@@ -11,7 +11,11 @@ public class Scope : MonoBehaviour
     public bool DeathBool = true;
 
 
-    void Start() => ScoreTopTxt.text = PlayerPrefs.GetInt("ScoreTop", ScoreTop).ToString();
+    void Start()
+    {
+        ScoreTopTxt.text = PlayerPrefs.GetInt("ScoreTop", ScoreTop).ToString();
+        ScoreTop = PlayerPrefs.GetInt("ScoreTop", 0);
+    } 
 
     private void Update()
     {
@@ -19,6 +23,17 @@ public class Scope : MonoBehaviour
         if (score1 > ScoreTop)
         {
             PlayerPrefs.SetInt("ScoreTop", score1);
+            Social.ReportScore(score1, GPS.leaderboard_willy_jump, success =>
+            {
+                if (success)
+                {
+                    Debug.Log("успешная отправка");
+                }
+                else
+                {
+                    Debug.Log("Отправка не успешна");
+                }
+            });
         }
         scoreDisplay.text = score1.ToString();
     }
@@ -27,6 +42,7 @@ public class Scope : MonoBehaviour
     {
         if (other.CompareTag("Block") && DeathBool)
         {
+            Destroy(other.gameObject);
             score++;
         }
     }
