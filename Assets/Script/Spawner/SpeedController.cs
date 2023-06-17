@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 
 public class SpeedController : MonoBehaviour
 {
     [SerializeField] private float _timeChange = 0.1f;
-    [SerializeField] private Player _player;
+    [SerializeField] private PlayerJump _player;
     [SerializeField] private float _limitSpeed = 2f;
     private Spawner _spawner;
     private Coroutine _addCooldownCoroutine;

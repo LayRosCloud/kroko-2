@@ -1,18 +1,23 @@
 ﻿using UnityEngine;
-
+using UnityEngine.Serialization;
 
 public class StartMenu : MonoBehaviour
 {
-    [SerializeField]private GameObject CanvasMenu;
-    [SerializeField]private GameObject CanvasGame;
-    [SerializeField]private GameObject CanvasStart;
-    [SerializeField]private GameObject CanvasOption;
-    [SerializeField] private Learning _learning; 
+    [FormerlySerializedAs("CanvasMenu")] [SerializeField] private GameObject _canvasMenu;
+    [FormerlySerializedAs("CanvasGame")] [SerializeField] private GameObject _canvasGame;
+    [FormerlySerializedAs("CanvasStart")] [SerializeField] private GameObject _canvasStart;
+    [Space]
+    [SerializeField] private Learning _learning;
+    [Space]
+    [SerializeField] private Spawner _spawner;
+    [SerializeField] private StartBlock _startBlock;
+    [SerializeField] private WaterUp _waterUp;
+    [SerializeField] private PlayerJump _playerJump;
     
     public void Button()
     {
-        CanvasMenu.SetActive(false);
-        CanvasGame.SetActive(true);
+        _canvasMenu.SetActive(false);
+        _canvasGame.SetActive(true);
         StartCoroutine(_learning.StartLearnCoroutine(() =>
             {
                 LearnCompleted();
@@ -23,20 +28,11 @@ public class StartMenu : MonoBehaviour
 
     public void LearnCompleted()
     {
-        GameObject.FindGameObjectWithTag("Spawner").GetComponent<Spawner>().IsStartGame = true;
-        GameObject.FindGameObjectWithTag("StartBlock").GetComponent<StartBlock>().Raz = true;
-        FindObjectOfType<WaterUp>().IsStartGame = true;
-        FindObjectOfType<Player>().IsStartedGame = true;
+        _spawner.IsStartGame = true;
+        _startBlock.Raz = true;
+        _waterUp.IsStartGame = true;
+        _playerJump.IsStartedGame = true;
         
-        CanvasStart.SetActive(true);
-    }
-
-    public void ButtonOption()
-    {
-        CanvasOption.SetActive(true);
-    }
-    public void ButtonOptionOff()
-    {
-        CanvasOption.SetActive(false);
+        _canvasStart.SetActive(true);
     }
 }

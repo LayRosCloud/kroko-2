@@ -7,17 +7,18 @@ using UnityEngine.UI;
 
 public class DeathButtons : MonoBehaviour
 {
-    [SerializeField] private Player _player;
+    [SerializeField] private PlayerPosition _player;
     [SerializeField] private Transform[] _spawnPoints;
     [SerializeField] private Text _backCounter;
     [SerializeField] private GameObject _canvasDeath;
-    [FormerlySerializedAs("Scope")] [SerializeField] private ScoreController _scoreController;
-    
+    [SerializeField] private ScoreController _scoreController;
+
+    [SerializeField] private PlayerDeath _playerDeath;
     public void WatchAds()
     {
         Debug.Log("Вы посмотрели рекламу!");
         _player.gameObject.GetComponent<Rigidbody>().isKinematic = true;
-        _player.gameObject.transform.position = _spawnPoints[_player.CurrentPosition].position;
+        _player.gameObject.transform.position = _spawnPoints[_player.GetPosition()].position;
         _canvasDeath.SetActive(false);
         StartCoroutine(Spawn());
     }
@@ -36,7 +37,7 @@ public class DeathButtons : MonoBehaviour
         _player.gameObject.GetComponent<Rigidbody>().isKinematic = false;
         _backCounter.text = "";
         
-        _scoreController.IsDead = false;
+        _playerDeath.Heal();
     }
     
     public void Back()

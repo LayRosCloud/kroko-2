@@ -12,6 +12,7 @@ public class Learning : MonoBehaviour
 
     private void Start()
     {
+        PlayerPrefs.DeleteAll();
         isCompleted = PlayerPrefs.GetInt("CompleteLearn", 0) == 1;
     }
 
@@ -26,7 +27,7 @@ public class Learning : MonoBehaviour
             _firstImage.color = firstImageColor;
 
             Time.timeScale = 0f;
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(0.01f);
             firstImageColor.a = 0f;
             _firstImage.color = firstImageColor;
         
@@ -35,7 +36,7 @@ public class Learning : MonoBehaviour
             _secondImage.color = secondImageColor;
             Time.timeScale = 0f;
         
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(0.01f);
             secondImageColor.a = 0f;
             _secondImage.color = secondImageColor;
             isCompleted = true;

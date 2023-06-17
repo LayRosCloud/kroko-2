@@ -1,13 +1,12 @@
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class Death : MonoBehaviour
 {
     [SerializeField] private GameObject _back;
     [SerializeField] private GameObject _btnVideo;
     [SerializeField] private GameObject _skip;
-    [FormerlySerializedAs("Time")] [SerializeField] private GameObject _time;
-    [FormerlySerializedAs("Scope")] [SerializeField] private ScoreController _scoreController;
+    [SerializeField] private GameObject _time;
+    [SerializeField] private ScoreController _scoreController;
     
     private void SetActiveFalse()
     {

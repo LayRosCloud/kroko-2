@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -14,13 +13,16 @@ public class Spawner : MonoBehaviour
     [SerializeField] private float _spawnCooldownLimit;
 
     [SerializeField] private GameObject[] _spawnPoints;
+    
     private SpeedController _speedController;
+    
     private int _lastIndex;
     private bool _isStarted;
+    
     private Coroutine _spawnBlockCoroutine;
     private Coroutine _changeSpeed;
 
-    public float SpawnCooldownLimit => _spawnCooldownLimit;
+    //public float SpawnCooldownLimit => _spawnCooldownLimit;
 
     public float SpawnCooldownBlocks => _spawnCooldownBlocks;
     public bool IsStartGame { get; set; } = false;
@@ -39,6 +41,7 @@ public class Spawner : MonoBehaviour
         
         _spawnCooldownBlocks = value;
     }
+    
     private void Update()
     {
         if (IsStartGame == false)

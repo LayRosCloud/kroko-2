@@ -5,12 +5,11 @@ public class ScoreController : MonoBehaviour
 {
     [SerializeField] private Text _scoreText;
     [SerializeField] private Text _scoreTopText;
+    [SerializeField] private PlayerDeath _playerDeath;
     
     private int _score;
     private int _scoreTop;
     
-    public bool IsDead { get; set; }
-
     void Start()
     {        
         _scoreTop = PlayerPrefs.GetInt("ScoreTop", 0);
@@ -19,7 +18,7 @@ public class ScoreController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.GetComponent<Block>() != null && IsDead == false)
+        if (other.gameObject.GetComponent<Block>() != null && _playerDeath.IsDead == false)
         {
             _score++;
             

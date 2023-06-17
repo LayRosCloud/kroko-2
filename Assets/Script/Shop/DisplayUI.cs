@@ -1,11 +1,18 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class DisplayUI : MonoBehaviour
 {
     [SerializeField] private AudioSource _moneySound;
     [SerializeField] private Text _scoreCoin;
-    
+
+    private void Start()
+    {
+        int coinScore = PlayerPrefs.GetInt("Coin", 0);
+        _scoreCoin.text = coinScore.ToString();
+    }
+
     private void OnEnable()
     {
         DisplayEvents.AddMoney += AddMoney;
