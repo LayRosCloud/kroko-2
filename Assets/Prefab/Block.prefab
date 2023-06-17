@@ -45,8 +45,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d204c7a685c7c14488136a286715223, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
-  LifeTime: 10
 --- !u!1 &8634422078796434397
 GameObject:
   m_ObjectHideFlags: 0
@@ -58,7 +56,6 @@ GameObject:
   - component: {fileID: 677103846030153958}
   - component: {fileID: 2428180170772816300}
   - component: {fileID: 1195454054758384952}
-  - component: {fileID: 477103469135044592}
   - component: {fileID: 477103469135044594}
   - component: {fileID: 6573458589059779798}
   m_Layer: 0
@@ -133,22 +130,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!54 &477103469135044592
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8634422078796434397}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 72
-  m_CollisionDetection: 0
 --- !u!65 &477103469135044594
 BoxCollider:
   m_ObjectHideFlags: 0
