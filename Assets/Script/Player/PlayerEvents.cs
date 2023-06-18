@@ -1,11 +1,12 @@
 ﻿using System;
+using UnityEngine.Events;
 
 public class PlayerEvents
 {
-    public Action JumpEvent;
-    public Action DeathEvent;
+    public UnityEvent JumpEvent =new UnityEvent();
+    public UnityEvent DeathEvent = new UnityEvent();
 
-    public Action MoveEvent;
+    public UnityEvent MoveEvent = new UnityEvent();
 
     public static PlayerEvents Instance { get; } = new PlayerEvents();
 }

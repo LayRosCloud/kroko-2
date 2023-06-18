@@ -27,6 +27,7 @@ public class Shop : MonoBehaviour
         {
             PlayerPrefs.SetInt("Coin", currentBalance - skin.Cost);
             PlayerPrefs.SetInt($"Skin-{_shopUI.CurrentPosition}", 1);
+            skin.Buy();
             ShopEvents.Instance.BuyEvent.Invoke();
         }
     }

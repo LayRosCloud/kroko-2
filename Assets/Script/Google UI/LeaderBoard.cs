@@ -5,6 +5,7 @@ public class LeaderBoard : MonoBehaviour
 {
     private void Start()
     {
+        /*
         //авторизация
         PlayGamesPlatform.DebugLogEnabled = true;
         PlayGamesPlatform.Activate();
@@ -13,12 +14,15 @@ public class LeaderBoard : MonoBehaviour
         {
             Debug.Log(success ? "авторизация успешна" : "авторизация не успешна");
         });
+        */
     }
 
     public void ShowLeaderBoard()
     {
+        /*
         //показать leaderboard
         Social.ShowLeaderboardUI();
+        */
     }
     
 }

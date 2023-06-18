@@ -12,16 +12,6 @@ public class Skin : ScriptableObject
     [Space]
     [SerializeField] private Mesh _mesh;
 
-    public Skin()
-    {
-        ShopEvents.Instance.BuyEvent += Buy;
-    }
-
-    ~Skin()
-    {
-        ShopEvents.Instance.BuyEvent -= Buy;
-    }
-
     public Mesh SkinMesh => _mesh;
     public int Cost => _cost;
     public bool IsSold => _isSold;

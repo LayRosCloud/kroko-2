@@ -32,7 +32,7 @@ public class SpeedController : MonoBehaviour
     private IEnumerator CooldownAdded()
     {
          yield return new WaitForSeconds(_timeChange);
-         if (_counter++ % 200 == 0 && Difficulty < 3)
+         if (_counter++ % 100 == 0 && Difficulty < 3)
          {
              Difficulty++;
          }

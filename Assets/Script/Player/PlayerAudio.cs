@@ -10,11 +10,11 @@ public class PlayerAudio : MonoBehaviour
 
     private void OnEnable()
     {
-        PlayerEvents.Instance.MoveEvent += PlayStep;
-        PlayerEvents.Instance.DeathEvent += PlayDeathSound;
-        PlayerEvents.Instance.JumpEvent += PlayJumpSound;
+        PlayerEvents.Instance.MoveEvent.AddListener(PlayStep);
+        PlayerEvents.Instance.DeathEvent.AddListener(PlayDeathSound);
+        PlayerEvents.Instance.JumpEvent.AddListener(PlayJumpSound);
     }
-
+    
     private void PlayJumpSound()
     {
         _jumpSound.Play();

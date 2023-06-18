@@ -1,26 +1,22 @@
 using System.Collections;
 using UnityEngine;
 
-public class BlockBreak : MonoBehaviour
+public class BlockBreak : Block
 {
     [SerializeField] private GameObject _breakable;
-
-    private void OnTriggerEnter(Collider other)
+    
+    protected override void EnterPlayer()
     {
-        if (other.GetComponentInParent<Player>() != null)
-        {
-            StartCoroutine(Destroy());
-        }
+        StartCoroutine(Destroy());
     }
 
     private IEnumerator Destroy()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(_lifetime);
         GameObject gm = Instantiate(_breakable);
         gm.transform.position = transform.position;
         Destroy(gm, 5f);
         Destroy(gameObject);
     }
-
-
+    
 }

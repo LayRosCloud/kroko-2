@@ -3,9 +3,9 @@ using UnityEngine.UI;
 
 public class StartBlock : MonoBehaviour
 {
-    public float lifetime;
     public Text StartTime;
     public int lifetimeint;
+    public float lifetime;
     public bool Raz = false;
 
 

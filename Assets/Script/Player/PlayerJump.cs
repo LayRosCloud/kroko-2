@@ -9,11 +9,13 @@ public class PlayerJump : MonoBehaviour
     [SerializeField] private float _jumpForce;
     private bool _jump = true;
     private Rigidbody _rigidbody;
+    private PlayerDeath _playerDeath;
     public bool IsStartedGame { get; set; }
 
     private void Start()
     {
         _rigidbody = GetComponent<Rigidbody>();
+        _playerDeath = GetComponent<PlayerDeath>();
     }
 
     public float JumpForce
@@ -39,7 +41,7 @@ public class PlayerJump : MonoBehaviour
 
     private bool CanJump()
     {
-        return _jump && IsStartedGame;
+        return _jump && IsStartedGame && _playerDeath.IsDead == false;
     }
 
     public void Jump()

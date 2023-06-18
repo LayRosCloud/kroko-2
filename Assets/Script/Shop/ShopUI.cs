@@ -1,6 +1,4 @@
-﻿using System;
-using UnityEngine;
-using UnityEngine.Serialization;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class ShopUI : MonoBehaviour
@@ -35,8 +33,8 @@ public class ShopUI : MonoBehaviour
     {
         _selectPosition = PlayerPrefs.GetInt("SelectedSkin", 0);
         _balanceText.text = PlayerPrefs.GetInt("Coin", 0) + "$";
-        ShopEvents.Instance.BuyEvent += Buy;
-        ShopEvents.Instance.SelectEvent += Select;
+        ShopEvents.Instance.BuyEvent.AddListener(Buy);
+        ShopEvents.Instance.SelectEvent.AddListener(Select);
         
         for (int i = 0; i < skins.Length; i++)
         {
@@ -45,12 +43,6 @@ public class ShopUI : MonoBehaviour
                 skins[i].Buy();
             }
         }
-    }
-
-    private void OnDestroy()
-    {
-        ShopEvents.Instance.BuyEvent -= Buy;
-        ShopEvents.Instance.SelectEvent -= Select;
     }
 
     public void MoveRight(Skin[] skins)

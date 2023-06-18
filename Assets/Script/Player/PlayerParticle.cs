@@ -8,17 +8,7 @@ public class PlayerParticle : MonoBehaviour
 
     private void OnEnable()
     {
-        PlayerEvents.Instance.MoveEvent += Spawn;
-    }
-
-    private void OnDisable()
-    {
-        PlayerEvents.Instance.MoveEvent -= Spawn;
-    }
-
-    private void OnDestroy()
-    {
-        PlayerEvents.Instance.MoveEvent -= Spawn;
+        PlayerEvents.Instance.MoveEvent.AddListener(Spawn);
     }
 
     private void Spawn()

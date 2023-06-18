@@ -5,7 +5,7 @@ using Random = UnityEngine.Random;
 [RequireComponent(typeof(SpeedController))]
 public class Spawner : MonoBehaviour
 {
-    [SerializeField] private GameObject [] _blocks;
+    [SerializeField] private Block[] _blocks;
     
     [SerializeField] private float _spawnCooldownBlocks;
     [SerializeField] private float _spawnFirstBlock;
@@ -21,8 +21,6 @@ public class Spawner : MonoBehaviour
     
     private Coroutine _spawnBlockCoroutine;
     private Coroutine _changeSpeed;
-
-    //public float SpawnCooldownLimit => _spawnCooldownLimit;
 
     public float SpawnCooldownBlocks => _spawnCooldownBlocks;
     public bool IsStartGame { get; set; } = false;
@@ -87,7 +85,7 @@ public class Spawner : MonoBehaviour
 
         return index;
     }
-
+   
    private int GenerateSpawnedBlockIndex()
    {
        int range = Random.Range(0, 100);
@@ -97,6 +95,10 @@ public class Spawner : MonoBehaviour
        if (range < 10)
        {
            spawnedObjectIndex = 1;
+       }
+       else if (range < 20)
+       {
+           spawnedObjectIndex = 3;
        }
        else if (range < 30)
        {
@@ -109,10 +111,9 @@ public class Spawner : MonoBehaviour
 
        return spawnedObjectIndex;
    }
-   
    public void Spawn(int pointSpawn, int blockIndex)
    {
-       GameObject spawned = Instantiate(_blocks[blockIndex]);
+       GameObject spawned = Instantiate(_blocks[blockIndex].gameObject);
        spawned.transform.position = _spawnPoints[pointSpawn].transform.position;
    }
 }
