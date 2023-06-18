@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3adcdb20079d4b3fabf83ee037d33612, type: 3}
   m_Name: Sharik
   m_EditorClassIdentifier: 
-  _mesh: {fileID: -2432090755550338912, guid: b2811a3e1d0b36244afddba4c8735089, type: 3}
-  _cost: 419
+  _name: it
+  _description: I'll turn into what you're afraid of
   _isSold: 0
+  _cost: 419
+  _mesh: {fileID: -2432090755550338912, guid: b2811a3e1d0b36244afddba4c8735089, type: 3}

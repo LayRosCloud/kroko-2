@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3adcdb20079d4b3fabf83ee037d33612, type: 3}
   m_Name: Mag
   m_EditorClassIdentifier: 
-  _mesh: {fileID: -2432090755550338912, guid: c0e91e8f7e2a3234e928afbe3b4c36fb, type: 3}
-  _cost: 39
+  _name: magician
+  _description: a popadanets from another world
   _isSold: 0
+  _cost: 39
+  _mesh: {fileID: -2432090755550338912, guid: c0e91e8f7e2a3234e928afbe3b4c36fb, type: 3}

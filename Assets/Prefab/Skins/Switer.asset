@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3adcdb20079d4b3fabf83ee037d33612, type: 3}
   m_Name: Switer
   m_EditorClassIdentifier: 
-  _mesh: {fileID: -2432090755550338912, guid: 4bf047ff7ed64da4da8387ce762881e4, type: 3}
-  _cost: 479
+  _name: sweater
+  _description: "mom's gift\u2665"
   _isSold: 0
+  _cost: 479
+  _mesh: {fileID: -2432090755550338912, guid: 4bf047ff7ed64da4da8387ce762881e4, type: 3}

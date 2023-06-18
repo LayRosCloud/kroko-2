@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3adcdb20079d4b3fabf83ee037d33612, type: 3}
   m_Name: RockCroco
   m_EditorClassIdentifier: 
-  _mesh: {fileID: -2432090755550338912, guid: 8b86ccb74655d1746a5bf2ec5bc7a711, type: 3}
-  _cost: 349
+  _name: punk
+  _description: to rockenroll!
   _isSold: 0
+  _cost: 349
+  _mesh: {fileID: -2432090755550338912, guid: 8b86ccb74655d1746a5bf2ec5bc7a711, type: 3}

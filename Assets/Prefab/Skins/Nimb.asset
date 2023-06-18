@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3adcdb20079d4b3fabf83ee037d33612, type: 3}
   m_Name: Nimb
   m_EditorClassIdentifier: 
-  _mesh: {fileID: -2432090755550338912, guid: 10cb6178e38141446884f31930940557, type: 3}
-  _cost: 99
+  _name: angel
+  _description: it seems he was already dying
   _isSold: 0
+  _cost: 99
+  _mesh: {fileID: -2432090755550338912, guid: 10cb6178e38141446884f31930940557, type: 3}

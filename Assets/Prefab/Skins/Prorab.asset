@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3adcdb20079d4b3fabf83ee037d33612, type: 3}
   m_Name: Prorab
   m_EditorClassIdentifier: 
-  _mesh: {fileID: -2432090755550338912, guid: 5da88cadae9da374ab85b2291dc9f9bb, type: 3}
-  _cost: 239
+  _name: foreman
+  _description: maybe he makes these platforms
   _isSold: 0
+  _cost: 239
+  _mesh: {fileID: -2432090755550338912, guid: 5da88cadae9da374ab85b2291dc9f9bb, type: 3}
