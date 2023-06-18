@@ -12,6 +12,7 @@ public class Shop : MonoBehaviour
         _shopUI = GetComponent<ShopUI>();
         _shopUI.Init(_skins);
         _shopUI.MoveLeft(_skins);
+        
         if (_shopUI.SelectedPosition != -1)
         {
             _player.gameObject.GetComponentInChildren<MeshFilter>().mesh = _skins[_shopUI.SelectedPosition].SkinMesh;
@@ -26,8 +27,7 @@ public class Shop : MonoBehaviour
         {
             PlayerPrefs.SetInt("Coin", currentBalance - skin.Cost);
             PlayerPrefs.SetInt($"Skin-{_shopUI.CurrentPosition}", 1);
-            skin.Buy();
-            _shopUI.Buy();
+            ShopEvents.Instance.BuyEvent.Invoke();
         }
     }
 
@@ -37,7 +37,7 @@ public class Shop : MonoBehaviour
         if (skin.IsSold)
         {
             _player.gameObject.GetComponentInChildren<MeshFilter>().mesh = skin.SkinMesh;
-            _shopUI.Select();
+            ShopEvents.Instance.SelectEvent.Invoke();
         }
     }
     

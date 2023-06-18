@@ -45,7 +45,6 @@ public class PlayerMove : MonoBehaviour
         }
         
         Flip(_playerFlip.CanLeftFlip());
-        PlayerEvents.Instance.LeftMoveEvent.Invoke();
         ChangeMove(Direction.Left);
     }
     
@@ -57,7 +56,6 @@ public class PlayerMove : MonoBehaviour
         }
         
         Flip(_playerFlip.CanRightFlip());
-        PlayerEvents.Instance.RightMoveEvent.Invoke();
         ChangeMove(Direction.Right);
     }
 
@@ -80,16 +78,15 @@ public class PlayerMove : MonoBehaviour
         {
             _playerPosition.MoveLeft();
         }
-        
+        PlayerEvents.Instance.MoveEvent.Invoke();
         _targetDirection = direction;
-        
         _coroutine = null;
     }
     
     private IEnumerator MoveOnDirection(sbyte direction)
     {
         float unitMove = _moveSpeed / 5.0f; 
-        Debug.Log(direction);
+        
         sbyte center = _playerPosition.IsCenter();
         
         if (direction > 0)

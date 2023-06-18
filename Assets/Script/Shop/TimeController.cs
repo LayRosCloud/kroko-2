@@ -2,16 +2,9 @@
 
 public class TimeController : MonoBehaviour
 {
-    private void Start()
+    private void OnEnable()
     {
-        PlayerEvents.Instance.RightMoveEvent += SetOne;
-        PlayerEvents.Instance.LeftMoveEvent += SetOne;
-    }
-
-    private void OnDestroy()
-    {
-        PlayerEvents.Instance.LeftMoveEvent -= SetOne;
-        PlayerEvents.Instance.RightMoveEvent -= SetOne;
+        PlayerEvents.Instance.MoveEvent += SetOne;
     }
 
     private void SetOne()

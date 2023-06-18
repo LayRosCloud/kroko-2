@@ -8,20 +8,17 @@ public class PlayerParticle : MonoBehaviour
 
     private void OnEnable()
     {
-        PlayerEvents.Instance.LeftMoveEvent += Spawn;
-        PlayerEvents.Instance.RightMoveEvent += Spawn;
+        PlayerEvents.Instance.MoveEvent += Spawn;
     }
 
     private void OnDisable()
     {
-        PlayerEvents.Instance.RightMoveEvent -= Spawn;
-        PlayerEvents.Instance.LeftMoveEvent -= Spawn;
+        PlayerEvents.Instance.MoveEvent -= Spawn;
     }
 
     private void OnDestroy()
     {
-        PlayerEvents.Instance.RightMoveEvent -= Spawn;
-        PlayerEvents.Instance.LeftMoveEvent -= Spawn;
+        PlayerEvents.Instance.MoveEvent -= Spawn;
     }
 
     private void Spawn()

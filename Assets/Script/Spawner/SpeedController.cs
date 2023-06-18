@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
 public class SpeedController : MonoBehaviour
@@ -13,11 +14,13 @@ public class SpeedController : MonoBehaviour
     
     public float CurrentSpeed { get; private set; } = 1f;
 
+    private int _counter = 1;
+    
     private void Awake()
     {
         _spawner = GetComponent<Spawner>();
     }
-
+    
     public void AddValue()
     {
         if (_addCooldownCoroutine == null)
@@ -29,20 +32,24 @@ public class SpeedController : MonoBehaviour
     private IEnumerator CooldownAdded()
     {
          yield return new WaitForSeconds(_timeChange);
+         if (_counter++ % 200 == 0 && Difficulty < 3)
+         {
+             Difficulty++;
+         }
          
-          if (CurrentSpeed < (_limitSpeed*Difficulty))
-          {
+         if (CurrentSpeed < (_limitSpeed * Difficulty))
+         {
               CurrentSpeed += 0.02f;
-          }
+         }
          
-          if ((-22 * Difficulty) < gravity)
-          {
+         if ((-22 * Difficulty) < gravity)
+         {
               gravity -= 0.25f;
               Physics.gravity = new Vector3(0, gravity);
               _player.JumpForce += 0.1f;
-          }
+         }
           
-          _spawner.SetSpawnCooldownBlocks(_spawner.SpawnCooldownBlocks - 1f / 120f);
+         _spawner.SetSpawnCooldownBlocks(_spawner.SpawnCooldownBlocks - 1f / 120f);
           
          _addCooldownCoroutine = null;
     }

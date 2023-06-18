@@ -3,9 +3,9 @@ using UnityEngine.Serialization;
 
 public class StartMenu : MonoBehaviour
 {
-    [FormerlySerializedAs("CanvasMenu")] [SerializeField] private GameObject _canvasMenu;
-    [FormerlySerializedAs("CanvasGame")] [SerializeField] private GameObject _canvasGame;
-    [FormerlySerializedAs("CanvasStart")] [SerializeField] private GameObject _canvasStart;
+    [SerializeField] private GameObject _canvasMenu;
+    [SerializeField] private GameObject _canvasGame;
+    [SerializeField] private GameObject _canvasStart;
     [Space]
     [SerializeField] private Learning _learning;
     [Space]
