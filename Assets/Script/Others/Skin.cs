@@ -6,6 +6,8 @@ public class Skin : ScriptableObject
     [Header("Person info")]
     [SerializeField] private string _name;
     [SerializeField] private string _description;
+    [SerializeField] private LocalizationObject _nameLocale;
+    [SerializeField] private LocalizationObject _descriptionLocale;
     [Space]
     [SerializeField] private bool _isSold = false;
     [SerializeField] private int _cost;

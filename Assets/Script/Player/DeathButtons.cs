@@ -2,7 +2,6 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class DeathButtons : MonoBehaviour
@@ -11,13 +10,15 @@ public class DeathButtons : MonoBehaviour
     [SerializeField] private Transform[] _spawnPoints;
     [SerializeField] private Text _backCounter;
     [SerializeField] private GameObject _canvasDeath;
-    [SerializeField] private ScoreController _scoreController;
 
     [SerializeField] private PlayerDeath _playerDeath;
+    
+    
+    
     public void WatchAds()
     {
-        Debug.Log("Вы посмотрели рекламу!");
         _player.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+        _player.gameObject.GetComponent<Collider>().enabled = false;
         _player.gameObject.transform.position = _spawnPoints[_player.GetPosition()].position;
         _canvasDeath.SetActive(false);
         StartCoroutine(Spawn());
@@ -35,6 +36,7 @@ public class DeathButtons : MonoBehaviour
         yield return new WaitForSeconds(1f);
         
         _player.gameObject.GetComponent<Rigidbody>().isKinematic = false;
+        _player.gameObject.GetComponent<Collider>().enabled = true;
         _backCounter.text = "";
         
         _playerDeath.Heal();

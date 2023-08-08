@@ -6,7 +6,6 @@ public class Death : MonoBehaviour
     [SerializeField] private GameObject _btnVideo;
     [SerializeField] private GameObject _skip;
     [SerializeField] private GameObject _time;
-    [SerializeField] private ScoreController _scoreController;
     
     private void SetActiveFalse()
     {

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.Serialization;
 
 public class StartMenu : MonoBehaviour
@@ -13,7 +14,7 @@ public class StartMenu : MonoBehaviour
     [SerializeField] private StartBlock _startBlock;
     [SerializeField] private WaterUp _waterUp;
     [SerializeField] private PlayerJump _playerJump;
-    
+
     public void Button()
     {
         _canvasMenu.SetActive(false);

@@ -37,7 +37,6 @@ public class ScoreController : MonoBehaviour
         {
             PlayerPrefs.SetInt("ScoreTop", score);
             
-            GoogleController.ReportToGoogle(_score);
             
             _scoreTopText.text = score.ToString();
         }
