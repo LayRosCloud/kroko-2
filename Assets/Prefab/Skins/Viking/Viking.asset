@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3adcdb20079d4b3fabf83ee037d33612, type: 3}
+  m_Name: Viking
+  m_EditorClassIdentifier: 
+  _nameLocale: {fileID: 11400000, guid: df00b9ba1a4e5b643a85ba0ac8000521, type: 2}
+  _descriptionLocale: {fileID: 11400000, guid: a3e120ad0d02d7643bff02e261fdaa6b, type: 2}
+  _isSold: 0
+  _cost: 799
+  _mesh: {fileID: -2432090755550338912, guid: 7e18cead09abfbe449e2eea527656555, type: 3}

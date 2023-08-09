@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3adcdb20079d4b3fabf83ee037d33612, type: 3}
   m_Name: Footbool
   m_EditorClassIdentifier: 
-  _name: Soccer player
-  _description: What do you know about selfishness?
+  _nameLocale: {fileID: 11400000, guid: 2a45a370d845f664989298a4ae5e65be, type: 2}
+  _descriptionLocale: {fileID: 11400000, guid: a181bc93cd7066f4f9397a202f480e93, type: 2}
   _isSold: 1
   _cost: 9
   _mesh: {fileID: -2432090755550338912, guid: d428193180ce03543b7cb3db18a02e4a, type: 3}

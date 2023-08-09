@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3adcdb20079d4b3fabf83ee037d33612, type: 3}
   m_Name: CostymCroco
   m_EditorClassIdentifier: 
-  _name: Gentleman
-  _description: it's straight from the 18th century
+  _nameLocale: {fileID: 11400000, guid: 7defd7843d08e0248b2dd442acbeb271, type: 2}
+  _descriptionLocale: {fileID: 11400000, guid: ba94ab80907280541b367f75a4a7ac22, type: 2}
   _isSold: 1
   _cost: 5
   _mesh: {fileID: -2432090755550338912, guid: ee9a1be3c2a878c4690ec2f41679f8d8, type: 3}

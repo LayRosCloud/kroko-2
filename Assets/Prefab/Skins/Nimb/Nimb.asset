@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3adcdb20079d4b3fabf83ee037d33612, type: 3}
   m_Name: Nimb
   m_EditorClassIdentifier: 
-  _name: angel
-  _description: it seems he was already dying
+  _nameLocale: {fileID: 11400000, guid: f34edf196ebed0f43af758df45211f67, type: 2}
+  _descriptionLocale: {fileID: 11400000, guid: ab42f2f1304957647b5c036da4465ed5, type: 2}
   _isSold: 0
   _cost: 99
   _mesh: {fileID: -2432090755550338912, guid: 10cb6178e38141446884f31930940557, type: 3}

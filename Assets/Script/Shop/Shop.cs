@@ -5,10 +5,12 @@ public class Shop : MonoBehaviour
 {
     [SerializeField] private Skin[] _skins;
     [SerializeField] private Player _player;
-    private ShopUI _shopUI;
+    [SerializeField] private SceneLocalization _sceneLocalization;
+        private ShopUI _shopUI;
     
     private void Awake()
     {
+        _sceneLocalization.ChangeLocalizationEvent.AddListener(UpdateShop);
         _shopUI = GetComponent<ShopUI>();
         _shopUI.Init(_skins);
         _shopUI.MoveLeft(_skins);
@@ -29,7 +31,13 @@ public class Shop : MonoBehaviour
             PlayerPrefs.SetInt($"Skin-{_shopUI.CurrentPosition}", 1);
             skin.Buy();
             ShopEvents.Instance.BuyEvent.Invoke();
+            UpdateShop();
         }
+    }
+
+    public void UpdateShop()
+    {
+        _shopUI.ShowSkin(_skins);
     }
 
     public void Select()

@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Locale/Object", fileName = "new file", order = 1)]
@@ -8,17 +7,22 @@ public class LocalizationObject : ScriptableObject
     [SerializeField] private string _ru;
     [SerializeField] private string _en;
 
-    private readonly Dictionary<Locale, string> _table = new();
-    
-    public LocalizationObject()
+    public void Init(string ru, string en)
     {
-        _table.Add(Locale.Ru, _ru);
-        _table.Add(Locale.En, _en);
+        _ru = ru;
+        _en = en;
     }
 
     public string GetLocalizationText()
     {
-        return _table.GetValueOrDefault(LocalizationGlobal.Language);
+        switch (LocalizationGlobal.Language)
+        {
+            case Locale.En:
+                return _en;
+            case Locale.Ru:
+                return _ru;
+        }
+        throw new ArgumentException("Язык не найден");
     }
     
 }

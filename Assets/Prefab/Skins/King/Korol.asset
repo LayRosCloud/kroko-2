@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3adcdb20079d4b3fabf83ee037d33612, type: 3}
   m_Name: Korol
   m_EditorClassIdentifier: 
-  _name: King
-  _description: Make platforms your subjects
-  _isSold: 0
-  _cost: 19
+  _nameLocale: {fileID: 11400000, guid: 05c5fe116757d11438023b7d9cb640e7, type: 2}
+  _descriptionLocale: {fileID: 11400000, guid: 48195a0e81efb8b4d91f19e7023e4dcf, type: 2}
+  _isSold: 1
+  _cost: 5
   _mesh: {fileID: -2432090755550338912, guid: 5729853be998abe4d98674502a17fcb4, type: 3}

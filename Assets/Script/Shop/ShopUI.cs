@@ -69,7 +69,7 @@ public class ShopUI : MonoBehaviour
         ShowSkin(skins);
     }
 
-    private void ShowSkin(Skin[] skins)
+    public void ShowSkin(Skin[] skins)
     {
         Skin skin = skins[_currentPosition];
         SetText(skin);

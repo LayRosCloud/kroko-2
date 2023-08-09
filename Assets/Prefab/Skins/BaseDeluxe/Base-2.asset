@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3adcdb20079d4b3fabf83ee037d33612, type: 3}
   m_Name: Base-2
   m_EditorClassIdentifier: 
-  _name: Basic Deluxe
-  _description: This is a basic crocodile with a Deluxe label
+  _nameLocale: {fileID: 11400000, guid: 77e1e48c2b6bccb41a2e10524235985d, type: 2}
+  _descriptionLocale: {fileID: 11400000, guid: 87380710a0938d24088a1040441190c4, type: 2}
   _isSold: 0
   _cost: 999
   _mesh: {fileID: -2432090755550338912, guid: 591f7d17f97b7e54482a7901d5428f90, type: 3}
